@@ -1,0 +1,21 @@
+{
+  "answers" : [
+    [ "First|First tone", "Third|Third tone", "Second|Second tone", "Fourth|Fourth tone", "Fifth|Fifth tone" ],
+    [ "Second|Second tone","First|First tone", "Third|Third tone", "Fourth|Fourth tone", "Fifth|Fifth tone" ],
+    [ "Third|Third tone", "First|First tone", "Second|Second tone", "Fourth|Fourth tone", "Fifth|Fifth tone" ],
+    [ "Fourth|Fourth tone","Third|Third tone", "First|First tone", "Second|Second tone",  "Fifth|Fifth tone" ],
+    [ "Fifth|Fifth tone", "Third|Third tone", "First|First tone", "Second|Second tone", "Fourth|Fourth tone" ]
+
+  ],
+  "dictionary" : {
+
+  },
+  "followUps" : [ "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" ],
+  "questions" : [
+    "ma1-mother-female.mp3",
+    "ma2-hemp-female.ogg",
+    "ma3-horse-male.ogg",
+    "ma4-scold-female.ogg",
+    "ma5-question-male.ogg"
+     ]
+}
