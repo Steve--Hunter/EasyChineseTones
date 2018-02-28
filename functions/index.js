@@ -492,7 +492,9 @@ exports.triviaGame = functions.https.onRequest((request, response) => {
         return;
       }
       if (question) {
-        ssmlResponse.say(question);
+        questionSsmlResponse.say('What tone is this?');
+        questionSsmlResponse.audio(AUDIO_BASE_URL+question, 'Chinese tone');
+        // ssmlResponse.say(question);
       }
       // Format the answers
       for (let i = 0; i < answers.length; i++) {
@@ -557,8 +559,8 @@ exports.triviaGame = functions.https.onRequest((request, response) => {
         return;
       }
       if (question) {
-        questionSsmlResponse.say("What tone is this?");
-        questionSsmlResponse.audio(AUDIO_BASE_URL+question,'Chinese tone');
+        questionSsmlResponse.say('What tone is this?');
+        questionSsmlResponse.audio(AUDIO_BASE_URL+question, 'Chinese tone');
       }
       questionSsmlResponse.pause(TTS_DELAY);
       questionSsmlResponse.audio(getRandomAudio(AUDIO_TYPES.AUDIO_DING), 'ding');

@@ -20,7 +20,7 @@
 // https://firebase.google.com/docs/database/
 const firebaseAdmin = require('firebase-admin');
 // Import local JSON file as Cloud Function dependency
-const cert = require('./dialogflow-trivia-game-nodejs-firebase-adminsdk-nwpbg-326b1fcfe0.json');
+const cert = require('./dialogflow-trivia-game-nodejs-firebase.json');
 
 const DATABASE_DATA_KEY = 'data';
 
