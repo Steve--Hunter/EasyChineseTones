@@ -95,7 +95,7 @@ const TTS_DELAY = '500ms';
 const MAX_PREVIOUS_QUESTIONS = 100;
 const SUGGESTION_CHIPS_MAX_TEXT_LENGTH = 25;
 const SUGGESTION_CHIPS_MAX = 8;
-const GAME_TITLE = 'Easy Chinese Tones';
+const GAME_TITLE = 'Simplified Chinese Tones';
 const QUESTIONS_PER_GAME = 5;
 
 // Firebase data keys
@@ -465,6 +465,7 @@ exports.triviaGame = functions.https.onRequest((request, response) => {
 
   // Utility to create the prompt to ask a question
   const askQuestion = (ssmlResponse, question, answers) => {
+    const questionSsmlResponse = new Ssml();
     logger.debug(logObject('trivia', 'askQuestion', {
       info: 'askQuestion'
     }));
@@ -493,7 +494,7 @@ exports.triviaGame = functions.https.onRequest((request, response) => {
       }
       if (question) {
         questionSsmlResponse.say('What tone is this?');
-        questionSsmlResponse.audio(AUDIO_BASE_URL+question, 'Chinese tone');
+        questionSsmlResponse.audio(AUDIO_BASE_URL + question, 'Chinese tone');
         // ssmlResponse.say(question);
       }
       // Format the answers
@@ -560,7 +561,7 @@ exports.triviaGame = functions.https.onRequest((request, response) => {
       }
       if (question) {
         questionSsmlResponse.say('What tone is this?');
-        questionSsmlResponse.audio(AUDIO_BASE_URL+question, 'Chinese tone');
+        questionSsmlResponse.audio(AUDIO_BASE_URL + question, 'Chinese tone');
       }
       questionSsmlResponse.pause(TTS_DELAY);
       questionSsmlResponse.audio(getRandomAudio(AUDIO_TYPES.AUDIO_DING), 'ding');
