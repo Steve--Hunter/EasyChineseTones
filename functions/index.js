@@ -600,11 +600,11 @@ exports.triviaGame = functions.https.onRequest((request, response) => {
     }
   };
 
-  // For ordinal responses, check that answer is in range - taken out as overlap with tone answers
-/*  const isValidAnswer = (answer, answers) => {
+  // For ordinal responses, check that answer is in range
+  const isValidAnswer = (answer, answers) => {
     return (answer && !isNaN(parseInt(answer)) &&
       parseInt(answer) < (answers.length + 1) && parseInt(answer) > 0);
-  }; */
+  };
 
   // Generate the response for the next question
   const nextQuestion = (app, ssmlResponse) => {
