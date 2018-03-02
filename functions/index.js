@@ -465,7 +465,6 @@ exports.triviaGame = functions.https.onRequest((request, response) => {
 
   // Utility to create the prompt to ask a question
   const askQuestion = (ssmlResponse, question, answers) => {
-    const questionSsmlResponse = new Ssml();
     logger.debug(logObject('trivia', 'askQuestion', {
       info: 'askQuestion'
     }));
@@ -493,8 +492,8 @@ exports.triviaGame = functions.https.onRequest((request, response) => {
         return;
       }
       if (question) {
-        questionSsmlResponse.say('What tone is this?');
-        questionSsmlResponse.audio(AUDIO_BASE_URL + question, 'Chinese tone');
+        ssmlResponse.say('What tone is this?');
+        ssmlResponse.audio(AUDIO_BASE_URL + question, 'Chinese tone');
         // ssmlResponse.say(question);
       }
       // Format the answers
@@ -601,11 +600,11 @@ exports.triviaGame = functions.https.onRequest((request, response) => {
     }
   };
 
-  // For ordinal responses, check that answer is in range
-  const isValidAnswer = (answer, answers) => {
+  // For ordinal responses, check that answer is in range - taken out as overlap with tone answers
+/*  const isValidAnswer = (answer, answers) => {
     return (answer && !isNaN(parseInt(answer)) &&
       parseInt(answer) < (answers.length + 1) && parseInt(answer) > 0);
-  };
+  }; */
 
   // Generate the response for the next question
   const nextQuestion = (app, ssmlResponse) => {
