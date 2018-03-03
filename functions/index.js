@@ -60,6 +60,7 @@ const VALUE_INTENT = 'game.choice.value';
 const UNKNOWN_INTENT = 'game.unknown';
 const REPEAT_INTENT = 'game.question.repeat';
 const SCORE_INTENT = 'game.score';
+// const AVERAGE_INTENT = 'game.average';
 const HELP_INTENT = 'game.help';
 const QUIT_INTENT = 'game.quit';
 const NEW_INTENT = 'game.restart';
@@ -334,6 +335,7 @@ exports.triviaGame = functions.https.onRequest((request, response) => {
               app.data.sessionFollowUps = sessionFollowUps;
               app.data.questionPrompt = questionPrompt;
               app.data.score = 0;
+              // app.data.averageScore = 0;
               app.data.currentQuestion = currentQuestion;
               app.data.gameLength = gameLength;
               app.data.fallbackCount = 0;
@@ -916,7 +918,21 @@ exports.triviaGame = functions.https.onRequest((request, response) => {
     ssmlResponse.say(sprintf(getRandomPrompt(PROMPT_TYPES.YOUR_SCORE_PROMPTS), app.data.score));
     askQuestion(ssmlResponse, app.data.questionPrompt, app.data.selectedAnswers);
   };
+/*
+  // Handle user average score request
+  const averageIntent = (app) => {
+    logger.info(logObject('trivia', 'averageIntent', {
+      info: 'Handling average score intent',
+      rawInput: app.getRawInput()
+    }));
 
+    app.data.fallbackCount = 0;
+    const ssmlResponse = new Ssml();
+    // ssmlResponse.say(sprintf(getRandomPrompt(PROMPT_TYPES.YOUR_SCORE_PROMPTS), app.data.score));
+    ssmlResponse.say('Your Average is being calculated');
+    askQuestion(ssmlResponse, app.data.questionPrompt, app.data.selectedAnswers);
+  };
+*/
   // Handle user help request
   const helpIntent = (app) => {
     logger.info(logObject('trivia', 'helpIntent', {
@@ -1369,6 +1385,7 @@ exports.triviaGame = functions.https.onRequest((request, response) => {
   actionMap.set(UNKNOWN_INTENT, unknownIntent);
   actionMap.set(REPEAT_INTENT, repeatIntent);
   actionMap.set(SCORE_INTENT, scoreIntent);
+  // actionMap.set(AVERAGE_INTENT, averageIntent);
   actionMap.set(HELP_INTENT, helpIntent);
   actionMap.set(QUIT_INTENT, quitIntent);
   actionMap.set(PLAY_AGAIN_YES_INTENT, playAgainYesIntent);
