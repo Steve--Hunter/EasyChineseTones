@@ -335,7 +335,6 @@ exports.triviaGame = functions.https.onRequest((request, response) => {
               app.data.sessionFollowUps = sessionFollowUps;
               app.data.questionPrompt = questionPrompt;
               app.data.score = 0;
-              // app.data.averageScore = 0;
               app.data.currentQuestion = currentQuestion;
               app.data.gameLength = gameLength;
               app.data.fallbackCount = 0;

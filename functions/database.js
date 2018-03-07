@@ -16,7 +16,7 @@
 /**
  * Utility class to load questions and prompts into a Firebase database
  */
-
+console.log('Sript started');
 // https://firebase.google.com/docs/database/
 const firebaseAdmin = require('firebase-admin');
 // Import local JSON file as Cloud Function dependency
@@ -30,6 +30,8 @@ firebaseAdmin.initializeApp({
   databaseURL: 'https://easy-chinese-tones.firebaseio.com'
 });
 
+console.log('Initialize firebase database access - complete');
+
 // Wait for data to be updated before exiting app
 firebaseAdmin.database().ref(DATABASE_DATA_KEY)
   .on('value', (data) => {
@@ -38,8 +40,12 @@ firebaseAdmin.database().ref(DATABASE_DATA_KEY)
     }
   });
 
+console.log('Data updated - complete');
+
 // Load the questions and answers
 const questions = require('./data/questions.json');
 firebaseAdmin.database().ref(DATABASE_DATA_KEY).update(questions).catch(function (error) {
   console.error(error);
 });
+
+console.log('Questions and answers load - complete');
